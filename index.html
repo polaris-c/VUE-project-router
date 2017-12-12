@@ -17,10 +17,10 @@
     <!-- Hello World. -->
     <div id = "app1">
         <el-container>
-            <el-header> - System name - </el-header>
+            <el-header> - System Name And User Information - </el-header>
 
             <el-container>
-                <el-aside width="250px">
+                <el-aside width="240px">
                     <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
 
                         <el-submenu index="1">
@@ -82,75 +82,84 @@
     </div>
 
     <template id = "searchTPL">
-        <div>
+        <div class = "searchView">
             <hr>
-            <el-input placeholder="请输入搜索内容" v-model.lazy="aInput" prefix-icon="el-icon-search" clearable></el-input>
+            <el-input id = "searchBox" placeholder="请输入搜索内容" v-model="aInput" clearable>
+                <i slot="prefix" class="el-input__icon el-icon-search"></i>
+            </el-input>
             <hr>
             <div id = "showSearchText">搜索： {{ aInput }}</div>
         </div>
     </template>
 
     <template id = "addTPL">
-        <div>
-            <el-form ref="form" :model="form" :label-position="labelPosition" label-width="120px" size="mini" >
-                
-                <el-form-item label="录入人员编号">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
+        <div >
+            
+            <el-form ref="form" :model="form" :label-position="labelPosition" label-width="100px" size="small" >
+                <el-row type="flex">
+                    <el-form-item label="录入人员编号">
+                        <el-input v-model="form.name" clearable></el-input>
+                    </el-form-item>
 
-                <el-form-item label="录入部门">
-                    <el-select v-model="form.region" placeholder="请选择活动区域" style="width: 90%;">
-                        <el-option label="二院" value="shanghai"></el-option>
-                        <el-option label="消防所" value="beijing"></el-option>
-                    </el-select>
-                </el-form-item>
+                    <el-form-item label="录入部门">
+                        <el-select v-model="form.region" placeholder="请选择活动区域" style="width: 100%;">
+                            <el-option label="二院" value="shanghai"></el-option>
+                            <el-option label="消防所" value="beijing"></el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-row>
 
+                <el-row type="flex">
                 <el-form-item label="录入时间">
-                    <el-col :span="11">
+                    <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
+                    -
+                    <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
+                </el-form-item>
+                </el-row>
+
+                <el-row type="flex">
+                    <el-form-item label="案件编号">
+                        <el-input v-model="form.name" clearable></el-input>
+                    </el-form-item>
+
+                    <el-form-item label="案件名称">
+                        <el-input v-model="form.name" clearable></el-input>
+                    </el-form-item>
+                </el-row>
+
+                <el-row type="flex">
+                    <el-form-item label="案发地点">
+                        <el-input v-model="form.name" clearable></el-input>
+                    </el-form-item>
+                </el-row>
+
+                <el-row type="flex">
+                    <el-form-item label="案发时间">
                         <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
-                    </el-col>
-                    <el-col class="line" :span="1">-</el-col>
-                    <el-col :span="11">
+                        -
                         <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
-                    </el-col>
-                </el-form-item>
+                    </el-form-item>
+                </el-row>
 
-                <el-form-item label="案件编号">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
-
-                <el-form-item label="案件名称">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
-
-                <el-form-item label="案发地点">
-                    <el-input v-model="form.name"></el-input>
-                </el-form-item>
-
-                <el-form-item label="案发时间">
-                    <el-col :span="11">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
-                    </el-col>
-                    <el-col class="line" :span="1">-</el-col>
-                    <el-col :span="11">
-                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
-                    </el-col>
-                </el-form-item>
-
-                <el-form-item label="备注" >
-                    <el-input type="textarea" v-model="form.desc" style="width: 90%;"></el-input>
-                </el-form-item>
-
-                <el-form-item>
-                    <el-button type="primary" @click="onSubmit">立即创建</el-button>
-                    <el-button>取消</el-button>
-                </el-form-item>
+                <el-row type="flex">
+                    <el-form-item label="备注" >
+                        <el-input type="textarea" v-model="form.desc" :rows="5" style="width: 450px;" ></el-input>
+                    </el-form-item>
+                </el-row>
+                
+                <el-row type="flex">
+                    <el-form-item>
+                        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                        <el-button>取消</el-button>
+                    </el-form-item>
+                </el-row>
             </el-form>
+            
         </div>
     </template>
 
     <template id = "checkTPL">
-        <el-table :data="tableData" border stripe>
+        <el-table :data="tableData" style="width: 100%" border stripe>
 
             <el-table-column label="日期" width="180"> 
                 <template slot-scope="scope">
@@ -159,19 +168,10 @@
                 </template>
             </el-table-column>
     
-            <el-table-column label="姓名" width="180">
-                <template slot-scope="scope">
-                    <el-popover trigger="hover" placement="top">
-                        <p>姓名: {{ scope.row.name }}</p>
-                        <p>住址: {{ scope.row.address }}</p>
-                        <div slot="reference" class="name-wrapper">
-                            <el-tag size="medium">{{ scope.row.name }}</el-tag>
-                        </div>
-                    </el-popover>
-                </template>
-            </el-table-column>
+            <el-table-column label="编号" prop="name"></el-table-column>
+            <el-table-column label="地点" prop="address"></el-table-column>
 
-            <el-table-column label="操作" width="280">
+            <el-table-column label="操作" >
                 <template slot-scope="scope">
                     <el-button size="mini" @click="">详细</el-button>
                     <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>

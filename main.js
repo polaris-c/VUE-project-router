@@ -52,7 +52,11 @@ const check = {
 	          	date: '2016-05-01',
 	          	name: 'C3',
 	          	address: '南京'
-	        }]
+	        },{
+	          	date: '2016-05-01',
+	          	name: 'D4',
+	          	address: '深圳'
+	        } ]
 		}
 	},
 	methods: {

@@ -5,8 +5,12 @@
   .el-header, .el-footer {
     background-color: #B3C0D1;
     color: #333;
-    text-align: center;
+    text-align: left;
     line-height: 60px;
+  }
+
+  .el-header {
+    font-size: 32px;
   }
   
   .el-aside {
@@ -19,7 +23,7 @@
   .el-main {
     background-color: #E9EEF3;
     color: #333;
-    text-align: center;
+    text-align: left;
     height: 600px;
   }
   
@@ -41,16 +45,27 @@
         min-height: 100%;
     }
 
-    #showSearchText {
+    .searchView {
+        width: 70%;
+    }
+
+    /*#searchTPL {
+        width: 600px;  
+    }*/
+    /*#searchBox {
         width: 80%;
+    }*/
+
+    #showSearchText {
+        width: 50%;
         font-size: 24px;
     }
 
     .el-date-picker {
-        
+       
     }
 
     .el-input {
-        width: 90%;
+        
     }
 

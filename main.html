@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang = "zh-cn">
+<head>
+	  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>VUE-router2</title>
+
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+    
+<body>
+    <!-- Hello World. -->
+    <div id = "app1">
+        <el-container>
+            <el-header> - System name - </el-header>
+
+            <el-container>
+                <el-aside width="250px">
+                    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+
+                        <el-submenu index="1">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                <span>导航一</span>
+                            </template>
+
+                            <router-link to = "/search" >
+                                <el-menu-item index="/search">搜索</el-menu-item>
+                            </router-link>
+
+                            <router-link to = "/add" >
+                                <el-menu-item index="/add">新增</el-menu-item>
+                            </router-link>
+
+                            <router-link to = "/check" >
+                                <el-menu-item index="/check">查看</el-menu-item>
+                            </router-link>
+                        </el-submenu>
+
+                        <el-menu-item index="2">
+                            <i class="el-icon-setting"></i>
+                            <span slot="title">导航二</span>
+                        </el-menu-item>
+
+                        <el-submenu index="3">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                <span>导航三</span>
+                            </template>
+
+                            <router-link to = "/search" >
+                                <el-menu-item index="/search">搜索</el-menu-item>
+                            </router-link>
+
+                            <router-link to = "/add" >
+                                <el-menu-item index="/add">新增</el-menu-item>
+                            </router-link>
+
+                            <router-link to = "/check" >
+                                <el-menu-item index="/check">查看</el-menu-item>
+                            </router-link>
+                        </el-submenu>
+                                
+                    </el-menu>
+                </el-aside>
+                
+                <el-container>
+                    <el-main>
+                        <router-view></router-view>
+                    </el-main>
+
+                    <el-footer>- Footer -</el-footer>
+                </el-container>
+
+            </el-container>
+        </el-container>
+    </div>
+
+    <template id = "searchTPL">
+        <div>
+            <hr>
+            <el-input placeholder="请输入搜索内容" v-model.lazy="aInput" prefix-icon="el-icon-search" clearable></el-input>
+            <hr>
+            <div id = "showSearchText">搜索： {{ aInput }}</div>
+        </div>
+    </template>
+
+    <template id = "addTPL">
+        <div>
+            <el-form ref="form" :model="form" :label-position="labelPosition" label-width="120px" size="mini" >
+                
+                <el-form-item label="录入人员编号">
+                    <el-input v-model="form.name"></el-input>
+                </el-form-item>
+
+                <el-form-item label="录入部门">
+                    <el-select v-model="form.region" placeholder="请选择活动区域" style="width: 90%;">
+                        <el-option label="二院" value="shanghai"></el-option>
+                        <el-option label="消防所" value="beijing"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="录入时间">
+                    <el-col :span="11">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
+                    </el-col>
+                    <el-col class="line" :span="1">-</el-col>
+                    <el-col :span="11">
+                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
+                    </el-col>
+                </el-form-item>
+
+                <el-form-item label="案件编号">
+                    <el-input v-model="form.name"></el-input>
+                </el-form-item>
+
+                <el-form-item label="案件名称">
+                    <el-input v-model="form.name"></el-input>
+                </el-form-item>
+
+                <el-form-item label="案发地点">
+                    <el-input v-model="form.name"></el-input>
+                </el-form-item>
+
+                <el-form-item label="案发时间">
+                    <el-col :span="11">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
+                    </el-col>
+                    <el-col class="line" :span="1">-</el-col>
+                    <el-col :span="11">
+                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
+                    </el-col>
+                </el-form-item>
+
+                <el-form-item label="备注" >
+                    <el-input type="textarea" v-model="form.desc" style="width: 90%;"></el-input>
+                </el-form-item>
+
+                <el-form-item>
+                    <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                    <el-button>取消</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </template>
+
+    <template id = "checkTPL">
+        <el-table :data="tableData" border stripe>
+
+            <el-table-column label="日期" width="180"> 
+                <template slot-scope="scope">
+                    <i class="el-icon-time"></i>
+                    <span style="margin-left: 10px">{{ scope.row.date }}</span>
+                </template>
+            </el-table-column>
+    
+            <el-table-column label="姓名" width="180">
+                <template slot-scope="scope">
+                    <el-popover trigger="hover" placement="top">
+                        <p>姓名: {{ scope.row.name }}</p>
+                        <p>住址: {{ scope.row.address }}</p>
+                        <div slot="reference" class="name-wrapper">
+                            <el-tag size="medium">{{ scope.row.name }}</el-tag>
+                        </div>
+                    </el-popover>
+                </template>
+            </el-table-column>
+
+            <el-table-column label="操作" width="280">
+                <template slot-scope="scope">
+                    <el-button size="mini" @click="">详细</el-button>
+                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+
+        </el-table>
+    </template>
+
+    <script type="text/javascript" src = "node_modules/vue/dist/vue.js"></script>
+    <script type="text/javascript" src = "node_modules/vue-router/dist/vue-router.js"></script>    
+    <script type="text/javascript" src = "node_modules/element-ui/lib/index.js"></script> 
+    <script type="text/javascript" src = "main.js"></script>	
+</body>
+</html>

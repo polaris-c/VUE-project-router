@@ -10,29 +10,30 @@
     }
 
   .el-header, .el-footer {
-    background-color: #D3DCE6;
+    background-color: #E6EFE0; /*E4EDE6*/
     color: #333;
     text-align: left;
     line-height: 60px;
+    font-family: "Microsoft YaHei", Arial;
   }
 
   .el-header {
-    font-size: 32px;
+    font-size: 26px;
   }
   
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: #D3DCE6; /*D3DCE6*/
     color: #333;
     text-align: left;
     line-height: 200px;
-    height: 650px;
+    height: 660px;
   }
   
   .el-main {
-    background-color: #eeeeee;
+    background-color: #f9f9f9;
     color: #333;
     text-align: left;
-    height: 650px;
+    height: 660px;
   }
   
   body > .el-container {
@@ -50,7 +51,7 @@
 
 /* */
     .el-menu {
-        height: 95%;
+        height: 100%;
     }
 
     .searchView {
@@ -66,7 +67,7 @@
 
     #showSearchText {
         width: 90%;
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .el-date-picker {

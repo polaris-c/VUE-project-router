@@ -22,12 +22,46 @@
 
             <el-container>
                 <el-aside width="220px">
-                    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" >
+                        <!-- background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" -->
 
                         <el-submenu index="1">
                             <template slot="title">
+                                <i class="el-icon-menu">  </i>
+                                <span>功能一</span>
+                            </template>
+
+                            <router-link to = "/search" >
+                                <el-menu-item index="/search">
+                                    <i class="el-icon-setting"></i>
+                                    搜索
+                                </el-menu-item>
+                            </router-link>
+
+                            <router-link to = "/add" >
+                                <el-menu-item index="/add">
+                                    <i class="el-icon-setting"></i>
+                                    <span>新增</span>
+                                </el-menu-item>
+                            </router-link>
+
+                            <router-link to = "/check" >
+                                <el-menu-item index="/check">
+                                    <i class="el-icon-setting"></i>
+                                    <span>查看</span>
+                                </el-menu-item>
+                            </router-link>
+                        </el-submenu>
+
+                        <el-menu-item index="2">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">功能二</span>
+                        </el-menu-item>
+
+                        <el-submenu index="3">
+                            <template slot="title">
                                 <i class="el-icon-menu"></i>
-                                <span>导航一</span>
+                                <span>功能三</span>
                             </template>
 
                             <router-link to = "/search" >
@@ -43,15 +77,15 @@
                             </router-link>
                         </el-submenu>
 
-                        <el-menu-item index="2">
-                            <i class="el-icon-setting"></i>
-                            <span slot="title">导航二</span>
+                        <el-menu-item index="4">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">功能四</span>
                         </el-menu-item>
 
-                        <el-submenu index="3">
+                        <el-submenu index="5">
                             <template slot="title">
                                 <i class="el-icon-menu"></i>
-                                <span>导航三</span>
+                                <span>功能五</span>
                             </template>
 
                             <router-link to = "/search" >

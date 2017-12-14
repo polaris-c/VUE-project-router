@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
 
     <title>VUE and element-ui</title>
 
@@ -18,102 +18,161 @@
     <!-- Hello World. -->
     <div id = "app1">
         <el-container>
-            <el-header> - System Name And User Information - </el-header>
-
+            <el-header>
+                <div id = "header"> - System Name And User Information - </div>
+            </el-header>
+            
             <el-container>
-                <el-aside width="220px">
-                    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" >
-                        <!-- background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" -->
+                
+                <el-aside width="220px"> <!--  -->
+                    <div id = "aside">
+
+                        <!-- router="true"可直接使用index值作为path进行路由跳转，无需<router-link> -->
+                    <el-menu router="true" default-active="1" class="el-menu-vertical-demo" 
+                        @open="handleOpen" @close="handleClose" 
+                        background-color="#EFEFEF" active-text-color="#0593D3">
+
+                        <!-- 暗色 background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" 00CC99-->
 
                         <el-submenu index="1">
                             <template slot="title">
-                                <i class="el-icon-menu">  </i>
+                                <i class="el-icon-menu" aria-hidden="true">  </i>
                                 <span>功能一</span>
                             </template>
 
-                            <router-link to = "/search" >
+                            <!-- <router-link to = "/search" > -->
                                 <el-menu-item index="/search">
-                                    <i class="el-icon-setting"></i>
+                                    <i class="el-icon-setting" aria-hidden="true"></i>
                                     搜索
                                 </el-menu-item>
-                            </router-link>
+                            <!-- </router-link> -->
 
-                            <router-link to = "/add" >
+                            <!-- <router-link to = "/add" > -->
                                 <el-menu-item index="/add">
                                     <i class="el-icon-setting"></i>
                                     <span>新增</span>
                                 </el-menu-item>
-                            </router-link>
+                            <!-- </router-link> -->
 
-                            <router-link to = "/check" >
+                            <!-- <router-link to = "/check" > -->
                                 <el-menu-item index="/check">
                                     <i class="el-icon-setting"></i>
                                     <span>查看</span>
                                 </el-menu-item>
-                            </router-link>
+                            <!-- </router-link> -->
                         </el-submenu>
 
-                        <el-menu-item index="2">
+                        <el-menu-item index="/search">
                             <i class="el-icon-menu"></i>
                             <span slot="title">功能二</span>
                         </el-menu-item>
 
-                        <el-submenu index="3">
+                        <el-submenu index="2">
                             <template slot="title">
-                                <i class="el-icon-menu"></i>
+                                <i class="el-icon-menu" aria-hidden="true">  </i>
                                 <span>功能三</span>
                             </template>
 
-                            <router-link to = "/search" >
-                                <el-menu-item index="/search">搜索</el-menu-item>
-                            </router-link>
+                            <!-- <router-link to = "/search" > -->
+                                <el-menu-item index="/search">
+                                    <i class="el-icon-setting" aria-hidden="true"></i>
+                                    搜索
+                                </el-menu-item>
+                            <!-- </router-link> -->
 
-                            <router-link to = "/add" >
-                                <el-menu-item index="/add">新增</el-menu-item>
-                            </router-link>
+                            <!-- <router-link to = "/add" > -->
+                                <el-menu-item index="/add">
+                                    <i class="el-icon-setting"></i>
+                                    <span>新增</span>
+                                </el-menu-item>
+                            <!-- </router-link> -->
 
-                            <router-link to = "/check" >
-                                <el-menu-item index="/check">查看</el-menu-item>
-                            </router-link>
+                            <!-- <router-link to = "/check" > -->
+                                <el-menu-item index="/check">
+                                    <i class="el-icon-setting"></i>
+                                    <span>查看</span>
+                                </el-menu-item>
+                            <!-- </router-link> -->
                         </el-submenu>
 
-                        <el-menu-item index="4">
-                            <i class="el-icon-menu"></i>
-                            <span slot="title">功能四</span>
-                        </el-menu-item>
-
-                        <el-submenu index="5">
+                        <el-submenu index="3">
                             <template slot="title">
-                                <i class="el-icon-menu"></i>
+                                <i class="el-icon-menu" aria-hidden="true">  </i>
+                                <span>功能四</span>
+                            </template>
+
+                            <!-- <router-link to = "/search" > -->
+                                <el-menu-item index="/search">
+                                    <i class="el-icon-setting" aria-hidden="true"></i>
+                                    搜索
+                                </el-menu-item>
+                            <!-- </router-link> -->
+
+                            <!-- <router-link to = "/add" > -->
+                                <el-menu-item index="/add">
+                                    <i class="el-icon-setting"></i>
+                                    <span>新增</span>
+                                </el-menu-item>
+                            <!-- </router-link> -->
+
+                            <!-- <router-link to = "/check" > -->
+                                <el-menu-item index="/check">
+                                    <i class="el-icon-setting"></i>
+                                    <span>查看</span>
+                                </el-menu-item>
+                            <!-- </router-link> -->
+                        </el-submenu>
+
+                        <el-submenu index="4">
+                            <template slot="title">
+                                <i class="el-icon-menu" aria-hidden="true">  </i>
                                 <span>功能五</span>
                             </template>
 
-                            <router-link to = "/search" >
-                                <el-menu-item index="/search">搜索</el-menu-item>
-                            </router-link>
+                            <!-- <router-link to = "/search" > -->
+                                <el-menu-item index="/search">
+                                    <i class="el-icon-setting" aria-hidden="true"></i>
+                                    搜索
+                                </el-menu-item>
+                            <!-- </router-link> -->
 
-                            <router-link to = "/add" >
-                                <el-menu-item index="/add">新增</el-menu-item>
-                            </router-link>
+                            <!-- <router-link to = "/add" > -->
+                                <el-menu-item index="/add">
+                                    <i class="el-icon-setting"></i>
+                                    <span>新增</span>
+                                </el-menu-item>
+                            <!-- </router-link> -->
 
-                            <router-link to = "/check" >
-                                <el-menu-item index="/check">查看</el-menu-item>
-                            </router-link>
+                            <!-- <router-link to = "/check" > -->
+                                <el-menu-item index="/check">
+                                    <i class="el-icon-setting"></i>
+                                    <span>查看</span>
+                                </el-menu-item>
+                            <!-- </router-link> -->
                         </el-submenu>
                                 
                     </el-menu>
+                    </div>
                 </el-aside>
-                
+
                 <el-main>
-                    <router-view></router-view>
+                    <div id = "main">
+                        <router-view></router-view>
+                    </div>
                 </el-main>
 
             </el-container>
+
+            <el-footer height = "40px">
+                <div id = "footer">
+                    - 2017.12.13 -
+                </div> 
+            </el-footer>
         </el-container>
     </div>
 
     <template id = "searchTPL">
-        <div class = "searchView">
+        <div id = "searchView">
             <el-input id = "searchBox" placeholder="请输入搜索内容" v-model="aInput" clearable>
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
             </el-input>
@@ -123,10 +182,10 @@
     </template>
 
     <template id = "addTPL">
-        <div >
+        <div id = "addView">
             
             <el-form ref="form" :model="form" :label-position="labelPosition" label-width="100px" size="small" >
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                     <el-form-item label="录入人员编号">
                         <el-input v-model="form.name" clearable></el-input>
                     </el-form-item>
@@ -137,17 +196,23 @@
                             <el-option label="消防所" value="beijing"></el-option>
                         </el-select>
                     </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
 
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                 <el-form-item label="录入时间">
-                    <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
-                    -
-                    <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
+                    <el-col :span="11">
+                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+                    </el-col>
+                    <el-col :span="2">
+                        <div style="text-align: center;"> - </div>
+                    </el-col>
+                    <el-col :span="11">
+                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+                    </el-col>
                 </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
 
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                     <el-form-item label="案件编号">
                         <el-input v-model="form.name" clearable></el-input>
                     </el-form-item>
@@ -155,34 +220,40 @@
                     <el-form-item label="案件名称">
                         <el-input v-model="form.name" clearable></el-input>
                     </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
 
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                     <el-form-item label="案发地点">
                         <el-input v-model="form.name" clearable></el-input>
                     </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
 
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                     <el-form-item label="案发时间">
-                        <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
-                        -
-                        <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2"></el-time-picker>
+                        <el-col :span="11">
+                            <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
+                        </el-col>
+                        <el-col :span="2">
+                            <div style="text-align: center;"> - </div>
+                        </el-col>
+                        <el-col :span="11">
+                            <el-time-picker type="fixed-time" placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
+                        </el-col>
                     </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
 
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                     <el-form-item label="备注" >
-                        <el-input type="textarea" v-model="form.desc" :rows="5" style="width: 450px;" ></el-input>
+                        <el-input type="textarea" v-model="form.desc" :rows="5" ></el-input>
                     </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
                 
-                <el-row type="flex">
+                <!-- <el-row type="flex"> -->
                     <el-form-item>
                         <el-button type="primary" @click="onSubmit">立即创建</el-button>
                         <el-button>取消</el-button>
                     </el-form-item>
-                </el-row>
+                <!-- </el-row> -->
             </el-form>
             
         </div>

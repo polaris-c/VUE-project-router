@@ -74,7 +74,7 @@ const check = {
 }
 
 const chart = {
-	template: '',
+	template: '#chartTPL',
 	data: function() {
 		return {
 

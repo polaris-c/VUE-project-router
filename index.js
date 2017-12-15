@@ -73,6 +73,18 @@ const check = {
     }
 }
 
+const chart = {
+	template: '',
+	data: function() {
+		return {
+
+		}
+	},
+	methods: {
+
+	}
+}
+
 const routes = [
 	{
 		path: '/search', 
@@ -85,8 +97,14 @@ const routes = [
 	{
 		path: '/check',
 		component: check
+	},
+	{
+		path: '/chart',
+		component: chart
 	}
 ]
+
+
 
 const router = new VueRouter({
 	routes: routes

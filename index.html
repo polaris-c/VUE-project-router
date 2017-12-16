@@ -62,7 +62,7 @@
                             <!-- </router-link> -->
                         </el-submenu>
 
-                        <el-menu-item index="/chart">
+                        <el-menu-item index="/AntVchart">
                             <i class="el-icon-menu"></i>
                             <span slot="title">功能二</span>
                         </el-menu-item>
@@ -283,10 +283,19 @@
         </el-table>
     </template>
 
-    <template id = "chartTPL">
+    <template id = "AntVchartTPL">
         <div>
-            <h3>Chart</h3>
+            <h3>AntVchart</h3>
+            <div>
+                <v-chart :force-fit="true" :height="height" :data="originData" :scale="scale">
+                    <v-tooltip />
+                    <v-axis />
+                    <v-line :position="'year*value'" />
+                    <v-point :position="'year*value'" />
+                </v-chart>
+            </div>
             
+            <hr>
         </div>
     </template>
 
@@ -294,8 +303,16 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
     <!-- <script type="text/javascript" src = "node_modules/vue-router/dist/vue-router.js"></script>  -->
     <script type="text/javascript" src="https://unpkg.com/vue-router/dist/vue-router.js"></script>   
+
     <!-- <script type="text/javascript" src = "node_modules/element-ui/lib/index.js"></script>  -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    
+    <script>/*Fixing iframe window.innerHeight 0 issue in Safari*/document.body.clientHeight;</script>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.2/g2.min.js"></script>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.0/data-set.min.js"></script>
+    <!-- <script src="https://unpkg.com/recharts/umd/viser-vue.min.js"></script> -->
+    <script type="text/javascript" src="node_modules/viser-vue/umd/viser-vue.js"></script>
+
     <script type="text/javascript" src = "index.js"></script>	
 </body>
 </html>

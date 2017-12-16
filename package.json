@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/polaris-c/VUE-project-router#readme",
   "dependencies": {
+    "@antv/g2": "^3.0.2",
     "bootstrap": "^3.3.7",
     "element-ui": "^2.0.7",
+    "viser-vue": "^1.3.0",
     "vue": "^2.5.9",
     "vue-router": "^3.0.1"
   }

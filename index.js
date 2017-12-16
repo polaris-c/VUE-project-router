@@ -1,5 +1,4 @@
-// console.log(' * * * OK * * *');
-
+(function() {
 const search = {
 	template: '#searchTPL',
 	data: function() {
@@ -73,11 +72,32 @@ const check = {
     }
 }
 
-const chart = {
-	template: '#chartTPL',
+const AntVchart = {
+	template: '#AntVchartTPL',
 	data: function() {
+		const originData = [
+    			{ year: '1991', value: 3 },
+			    { year: '1992', value: 4 },
+			    { year: '1993', value: 3.5 },
+			    { year: '1994', value: 5 },
+			    { year: '1995', value: 4.9 },
+			    { year: '1996', value: 6 },
+			    { year: '1997', value: 7 },
+			    { year: '1998', value: 9 },
+			    { year: '1999', value: 13 },
+  			];
+  		const scale = [{
+    			dataKey: 'value',
+    			min: 0,
+  			},{
+    			dataKey: 'year',
+    			min: 0,
+    			max: 1,
+  			}];
 		return {
-
+			originData,
+        	scale,
+        	height: '400px',	
 		}
 	},
 	methods: {
@@ -99,8 +119,8 @@ const routes = [
 		component: check
 	},
 	{
-		path: '/chart',
-		component: chart
+		path: '/AntVchart',
+		component: AntVchart
 	}
 ]
 
@@ -109,6 +129,7 @@ const routes = [
 const router = new VueRouter({
 	routes: routes
 })
+
 
 var app1 = new Vue({
 	el: '#app1',
@@ -125,3 +146,4 @@ var app1 = new Vue({
       	}
     }
 });
+})();

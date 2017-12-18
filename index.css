@@ -14,12 +14,12 @@
 
 html, body {  
     height: 100%;
+    width:100%; 
     margin: 0; 
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }  
 
 #app1 { 
-    background-color: ; 
     /*height:100% ; */
     width:100%; 
     position:absolute;
@@ -107,6 +107,11 @@ html, body {
 
 #addView {
     width: 60%;
+    margin: auto;
+}
+
+#checkView {
+    width: 80%;
     margin: auto;
 }
 
